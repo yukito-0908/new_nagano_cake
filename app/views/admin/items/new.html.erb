@@ -14,10 +14,10 @@
           <p>税抜価格</p>
           <%= f.text_field :price %>
           <div class="check_box_tag">
-            <%= check_box_tag :sample1, :true %>
-            <%= label_tag :sample1, "販売中" %>
-            <%= check_box_tag :sample2, :false %>
-            <%= label_tag :sample2, "販売停止中" %>
+            <%= f.radio_button :is_active, :true %>
+            <%= label_tag :is_active, "販売中" %>
+            <%= f.radio_button :is_active, :false %>
+            <%= label_tag :is_active, "販売停止中" %>
           </div>
           <%= f.submit '新規登録' %>
         <% end %>
