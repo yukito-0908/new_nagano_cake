@@ -5,7 +5,7 @@ class CreateOrderItems < ActiveRecord::Migration[5.2]
       t.integer :item_id
       t.integer :buy_price
       t.integer :quantity
-      t.integer :is_active,default: true
+      t.integer :is_active,default: 0
       t.timestamp :created_at, default: Time.now
       t.timestamp :updated_at, default: Time.now
     end

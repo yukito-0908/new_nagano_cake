@@ -17,8 +17,8 @@ ActiveRecord::Schema.define(version: 2021_05_09_071535) do
     t.string "name"
     t.string "postal_code"
     t.string "address"
-    t.datetime "created_at", default: "2021-05-09 07:51:25"
-    t.datetime "updated_at", default: "2021-05-09 07:51:25"
+    t.datetime "created_at", default: "2021-05-09 13:28:47"
+    t.datetime "updated_at", default: "2021-05-09 13:28:47"
   end
 
   create_table "admins", force: :cascade do |t|
@@ -27,8 +27,8 @@ ActiveRecord::Schema.define(version: 2021_05_09_071535) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.datetime "created_at", default: "2021-05-09 07:48:56"
-    t.datetime "updated_at", default: "2021-05-09 07:48:56"
+    t.datetime "created_at", default: "2021-05-09 13:28:47"
+    t.datetime "updated_at", default: "2021-05-09 13:28:47"
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
@@ -37,8 +37,8 @@ ActiveRecord::Schema.define(version: 2021_05_09_071535) do
     t.integer "item_id"
     t.integer "customer_id"
     t.integer "amount"
-    t.datetime "created_at", default: "2021-05-09 07:48:56"
-    t.datetime "updated_at", default: "2021-05-09 07:48:56"
+    t.datetime "created_at", default: "2021-05-09 13:28:47"
+    t.datetime "updated_at", default: "2021-05-09 13:28:47"
   end
 
   create_table "customers", force: :cascade do |t|
@@ -53,8 +53,8 @@ ActiveRecord::Schema.define(version: 2021_05_09_071535) do
     t.string "address"
     t.string "telephone_number"
     t.boolean "is_active", default: true
-    t.datetime "created_at", default: "2021-05-09 07:48:56"
-    t.datetime "updated_at", default: "2021-05-09 07:48:56"
+    t.datetime "created_at", default: "2021-05-09 13:28:47"
+    t.datetime "updated_at", default: "2021-05-09 13:28:47"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.index ["email"], name: "index_customers_on_email", unique: true
@@ -63,8 +63,8 @@ ActiveRecord::Schema.define(version: 2021_05_09_071535) do
 
   create_table "genres", force: :cascade do |t|
     t.string "name"
-    t.datetime "created_at", default: "2021-05-09 07:48:56"
-    t.datetime "updated_at", default: "2021-05-09 07:48:56"
+    t.datetime "created_at", default: "2021-05-09 13:28:47"
+    t.datetime "updated_at", default: "2021-05-09 13:28:47"
   end
 
   create_table "items", force: :cascade do |t|
@@ -74,8 +74,8 @@ ActiveRecord::Schema.define(version: 2021_05_09_071535) do
     t.text "introduction"
     t.string "name"
     t.boolean "is_active", default: true
-    t.datetime "created_at", default: "2021-05-09 07:48:56"
-    t.datetime "updated_at", default: "2021-05-09 07:48:56"
+    t.datetime "created_at", default: "2021-05-09 13:28:47"
+    t.datetime "updated_at", default: "2021-05-09 13:28:47"
   end
 
   create_table "order_items", force: :cascade do |t|
@@ -83,9 +83,9 @@ ActiveRecord::Schema.define(version: 2021_05_09_071535) do
     t.integer "item_id"
     t.integer "buy_price"
     t.integer "quantity"
-    t.integer "is_active", default: 1
-    t.datetime "created_at", default: "2021-05-09 07:48:56"
-    t.datetime "updated_at", default: "2021-05-09 07:48:56"
+    t.integer "is_active", default: 0
+    t.datetime "created_at", default: "2021-05-09 13:31:57"
+    t.datetime "updated_at", default: "2021-05-09 13:31:57"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -97,8 +97,8 @@ ActiveRecord::Schema.define(version: 2021_05_09_071535) do
     t.integer "billing_amount"
     t.integer "method_of_payment", default: 0
     t.integer "is_active", default: 0
-    t.datetime "created_at", default: "2021-05-09 07:48:56"
-    t.datetime "updated_at", default: "2021-05-09 07:48:56"
+    t.datetime "created_at", default: "2021-05-09 13:28:47"
+    t.datetime "updated_at", default: "2021-05-09 13:28:47"
   end
 
 end

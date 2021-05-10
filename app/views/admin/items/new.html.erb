@@ -1,0 +1,26 @@
+<div class="container">
+   <div class="row">
+     <div class="col">
+      <h1>商品新規登録</h1>
+        <%= form_with model: @item,url: admin_items_path, local:true do |f| %>
+          <h4>商品画像</h4>
+          <%= f.attachment_field :image %>
+          <h4>商品名</h4>
+          <%= f.text_field :name %>
+          <h4>商品説明</h4>
+          <%= f.text_area :introduction %>
+          <p>ジャンル</p>
+         <%= f.select :genre_id,options_from_collection_for_select(@genres, :id, :name) %>
+          <p>税抜価格</p>
+          <%= f.text_field :price %>
+          <div class="check_box_tag">
+            <%= check_box_tag :sample1, :true %>
+            <%= label_tag :sample1, "販売中" %>
+            <%= check_box_tag :sample2, :false %>
+            <%= label_tag :sample2, "販売停止中" %>
+          </div>
+          <%= f.submit '新規登録' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
