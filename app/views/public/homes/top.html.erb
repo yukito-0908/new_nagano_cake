@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="top-page">
+        <div class="top-title">
+          <div class="top-image"><%= image_tag('images.jpeg',size:"750x300" ) %></div>
+          <p>ようこそ長野ケーキへ!<br/>
+          このサイトはケーキ限定のECサイトになります。<br/>
+          会員でない方も商品の観覧はできますが、<br/>
+          購入には会員登録が必要になります。</p>
+        </div>
+      </div>
+        <div class="item-new">
+          <h1>新着商品</h1>
+          <% @items.each do |item| %>
+          <%= attachment_image_tag item, :image, size: "200x200" %>
+          <%= item.name %>
+          <%= item.price %>
+          <% end %>
+        </div>
+    </div>
+  </div>
+</div>
