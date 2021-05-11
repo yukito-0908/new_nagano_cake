@@ -1,0 +1,19 @@
+<div class="containaer">
+  <divi class="row">
+    <div class="col">
+      <div class="item-show">
+        <p><%= attachment_image_tag @item, :image, size: "250x250",:class=>"m-3"%></p>
+        <div class="item-information">
+          <p><%= @item.name %></p>
+          <p><%= @item.introduction %></p>
+          <P>¥<%= (@item.price * 1.10).to_i %>(税込)</P>
+        </div>
+          <%= form_with model: @cart_item,url: cart_items_path,method: :post, local:true do |f| %>
+            <%= f.number_field(:amount, in: 1..100) %>
+            <%= f.hidden_field :item_id, :value => @item.id %>
+            <%= f.submit "カートに入れる" %>
+          <% end %>
+      </div>
+    </div>
+  </divi>
+</div>

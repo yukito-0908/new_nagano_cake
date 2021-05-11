@@ -9,6 +9,16 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+  <header>
+    <% if customer_signed_in? %>
+      <li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete %></li>
+    <% else %>
+      <li><%= link_to 'ログイン',new_customer_session_path %></li>
+      <li><%= link_to '新規登録',new_customer_registration_path %></li>
+    <% end %>
+  </header>
+
+
   <body>
     <%= yield %>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
