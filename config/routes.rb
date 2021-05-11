@@ -1,12 +1,23 @@
 Rails.application.routes.draw do
-  devise_for :admin
   root :to => 'public/homes#top'
+
+  devise_for :admin, controllers: {
+      sessions: 'admin/sessions',
+  }
   get 'about' => 'public/homes#about'
-  devise_for :customers
-    namespace :admin do
-      resources :items, only: [:new, :create, :index, :show, :destroy, :edit, :update]
-      resources :genres, only: [:index, :edit, :update, :create]
+
+  namespace :admin do
+    resources :items, only: [:new, :create, :index, :show, :destroy, :edit, :update]
+    resources :genres, only: [:index, :edit, :update, :create]
   end
 
+  scope module: :public do
+    resource :customers
+    devise_for :customers, controllers: {
+      sessions: 'public/customers/sessions',
+      registrations: 'public/customers/registrations'
+    }
+    resources :items,only: [:index, :show]
+  end
 
 end
