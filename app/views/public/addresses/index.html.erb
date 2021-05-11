@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="address-title">
+        <h4>配送先登録/一覧</h4>
+          <div class="address-form">
+            <%= form_with model: @address,url:  public_addresses_path(@address), local:true do |f| %>
+              <div class="address-post">
+                <p>郵便番号(ハイフンなし)</p>
+                <p><%= f.text_field :postal_code %></p>
+              </div>
+                <div class="address-item">
+                  <p>住所</p>
+                  <p><%= f.text_field :address %></p>
+                </div>
+                  <div class="address-name">
+                    <p>住所</p>
+                    <p><%= f.text_field :name %></p>
+                  </div>
+                    <div class="address-link">
+                      <%= f.submit '新規登録' %>
+                    </div>
+            <% end %>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>郵便番号</th>
+                    <th>住所</th>
+                    <th>宛名</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                  <tbody>
+                    <% @addresses.each do |address| %>
+                      <tr>
+                        <td><%= address.postal_code %></td>
+                        <td><%= address.address %></td>
+                        <td><%= address.name %></td>
+                        <td>
+                          <%= link_to '編集する', edit_public_address_path(address),:class=> "d-inline-block"  %>
+                          <%= link_to '排除する', public_address_path(address.id), method: :delete,:class=> "d-inline-block" %>
+                        </td>
+                      </tr>
+                    <% end %>
+                  </tbody>
+              </table>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

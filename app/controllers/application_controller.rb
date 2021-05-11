@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name ,:last_name , :first_name_kana ,:last_name_kana ,:address ,:postal_code,:customer_id])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name ,:last_name , :first_name_kana ,:last_name_kana ,:address ,:postal_code,:customer_id, :telephone_number])
   end
 
 
@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
     when Admin
       admin_items_path
     when Customer
-      public_customers_path
+       public_customers_mypage_path
     end
   end
 end

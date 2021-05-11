@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h4>配送先編集</h4>
+        <%= form_with model: @address,url:  public_address_path(@address.id), local:true do |f| %>
+          <div class="address-post">
+            <p>郵便番号(ハイフンなし)</p>
+            <p><%= f.text_field :postal_code %></p>
+          </div>
+            <div class="address-address">
+              <p>住所</p>
+              <p><%= f.text_field :address %></p>
+            </div>
+              <div class="address-name">
+                <p>宛名</p>
+                <p><%= f.text_field :name %></p>
+              </div>
+                <div class="address-link">
+                  <%= f.submit '変更内容を保存' %>
+                </div>
+        <% end %>
+    </div>
+  </div>
+</div>
