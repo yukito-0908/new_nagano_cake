@@ -18,6 +18,13 @@
           <%= item.price %>
           <% end %>
         </div>
+          <div class="item-show">
+            <% if customer_signed_in? %>
+              <p><%= link_to '全ての商品を見る', public_items_path %></p>
+            <% else %>
+              <p><%= link_to '全ての商品を見る',  new_customer_registration_path %></p>
+            <% end %>
+          </div>
     </div>
   </div>
 </div>

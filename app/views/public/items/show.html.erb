@@ -8,7 +8,7 @@
           <p><%= @item.introduction %></p>
           <P>¥<%= (@item.price * 1.10).to_i %>(税込)</P>
         </div>
-          <%= form_with model: @cart_item,url: cart_items_path,method: :post, local:true do |f| %>
+          <%= form_with model: @cart_item,url: public_cart_items_path,method: :post, local:true do |f| %>
             <%= f.number_field(:amount, in: 1..100) %>
             <%= f.hidden_field :item_id, :value => @item.id %>
             <%= f.submit "カートに入れる" %>
