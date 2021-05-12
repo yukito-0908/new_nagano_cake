@@ -14,10 +14,10 @@ Rails.application.routes.draw do
     delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
     resources :cart_items,except: [:show]
     resources :addresses,only: [:index, :create, :edit, :update, :destroy]
+    resources :orders,only: [:index,:new, :create,:show]
     post 'orders/confirm' => 'orders#confirm'
     get 'orders/confirm' => 'orders#confirm'
     get 'orders/complete' => 'orders#show_done'
-    resource :orders,only: [:new, :create]
   end
 
   devise_for :customers, controllers: {

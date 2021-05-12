@@ -1,0 +1,87 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="table">
+        <table class="table">
+          <thead>
+            <tr>
+              <td>注文日</td>
+              <td><%= @order.updated_at %></td>
+            </tr>
+              <tr>
+                <td>配送先</td>
+                <td>
+                  <div><%= @order.delivery_postal_code %></div>
+                  <div><%= @order.delibery_address %></div>
+                  <div><%= @order.delivery_name %></div>
+                </td>
+              </tr>
+                <tr>
+                  <td>支払方法</td>
+                  <td>
+                    <% if @order.method_of_payment == 'A' %>
+                      <p>クレジットカード</p>
+                    <% else %>
+                      <p>銀行振込</p>
+                    <% end %>
+                  </td>
+                </tr>
+                  <tr>
+                    <td>ステータス</td>
+                    <td>
+                      <% if @order.is_active == '入金待ち' %>
+                        <p>入金待ち</p>
+                      <% elsif @order.is_active == '入金確認' %>
+                        <p>入金確認</p>
+                      <% elsif @order.is_active == '製作中' %>
+                        <p>製作中</p>
+                       <% elsif @order.is_active == '製作中' %>
+                        <p>製作中</p>
+                      <% else %>
+                        <p>発送済み</p>
+                      <% end %>
+                    </td>
+                  </tr>
+          </thead>
+        </table>
+          <table class="table">
+          <thead>
+            <tr>
+              <td>商品合計</td>
+              <td><%= @order.billing_amount - @order.shopping %></td>
+            </tr>
+              <tr>
+                <td>配送料</td>
+                <td><%= @order.shopping %></td>
+              </tr>
+                <tr>
+                  <td>ご請求額</td>
+                  <td><%= @order.billing_amount %></td>
+                </tr>
+          </thead>
+        </table>
+          <h4>注文内容</h4>
+          <table>
+            <thead>
+              <tr>
+                <th>商品</th>
+                <th>単価(税込)</th>
+                <th>個数</th>
+                <th>小計</th>
+              </tr>
+            </thead>
+              <tbody>
+                <% @order_items.each do |order_item| %>
+                <tr>
+                  <td><%= order_item.item.name %></td>
+                  <td><%= (order_item.item.price * @tax).to_i %></td>
+                  <td><%= order_item.quantity %></td>
+                  <td><%= (order_item.buy_price * @tax * order_item.quantity).to_i %></td>
+                </tr>
+                <% end %>
+              </tbody>
+          </table>
+      </div>
+    </div>
+  </div>
+</div>

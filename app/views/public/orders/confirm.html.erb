@@ -66,6 +66,7 @@
                 <%= f.hidden_field :delibery_address, :value => @order.delibery_address %>
                 <%= f.hidden_field :delivery_name, :value => @order.delivery_name %>
                 <%= f.hidden_field :shopping, :value => @order.shopping %>
+                <%= f.hidden_field :updated_at, :value => Time.now %>
                 <%= f.submit '注文を確定する' %>
               </div>
               <% end %>

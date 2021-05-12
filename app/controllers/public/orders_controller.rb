@@ -23,7 +23,18 @@ class Public::OrdersController < ApplicationController
   end
 
 
+  def show
+    @order = Order.find(params[:id])
+    @order_items = @order.order_items
+    @tax = 1.10
+  end
+
   def show_done
+  end
+
+
+  def index
+    @orders = current_customer.orders
   end
 
   def create
@@ -31,21 +42,25 @@ class Public::OrdersController < ApplicationController
     @order.customer_id = current_customer.id
     @order.save
     @cart_items = current_customer.cart_items
-    @cart_items.each do |cart_item|
-      @order_item = OrderItem.new(
-        order_id: @order.id,
-        item_id: cart_item.item.id,
-        quantity: cart_item.amount,
-        buy_price: cart_item.item.price
-      )
-      @order_item.save
-    end
-    redirect_to public_orders_complete_path
+      if @cart_items.each do |cart_item|
+         @order_item = OrderItem.new(
+            order_id: @order.id,
+            item_id: cart_item.item.id,
+            quantity: cart_item.amount,
+            buy_price: cart_item.item.price
+          )
+          @order_item.save
+        end
+        @cart_items.destroy_all
+        redirect_to public_orders_complete_path
+      else
+        render :confirm
+      end
   end
 
 
   private
   def order_params
-    params.require(:order).permit(:method_of_payment,:delivery_postal_code,:delibery_address,:delivery_name, :shopping, :billing_amount)
+    params.require(:order).permit(:method_of_payment,:delivery_postal_code,:delibery_address,:delivery_name, :shopping, :billing_amount,:updated_at)
   end
 end
