@@ -1,0 +1,74 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="order-item-title">
+        <h4>注文情報確認</h4>
+      </div>
+      <div class="table d-flex">
+        <table class="table m-2">
+          <thead>
+            <tr>
+              <th>商品名</th>
+              <th>単価(税込)</th>
+              <th>数量</th>
+              <th>小計</th>
+            </tr>
+          </thead>
+            <tbody>
+              <% @cart_item_sum = 0 %>
+              <% @cart_items.each do |cart_item| %>
+              <tr>
+                <td class="d-flex">
+                  <div class="item-img"><%= attachment_image_tag cart_item.item, :image, size: "50x50" %></div>
+                  <p class="m-3"><%= cart_item.item.name %></p>
+                </td>
+                <td><%= (cart_item.item.price * @tax ).to_i %></td>
+                <td><%= cart_item.amount %></td>
+                <td><%= ((cart_item.item.price * @tax) * (cart_item.amount)).to_i %></td>
+              </tr>
+              <% @cart_item_sum += ((cart_item.item.price * @tax) * (cart_item.amount)).to_i %>
+              <% end %>
+            </tbody>
+        </table>
+          <table class="table m-2">
+            <thdad>
+              <tr>
+                <td>送料</td>
+                <td><%= @order.shopping %></td>
+              </tr>
+                <tr>
+                  <td>商品合計</td>
+                  <td><%= @cart_item_sum  %></td>
+                </tr>
+                  <tr>
+                    <td>請求金額</td>
+                    <td><%= @cart_item_sum + @order.shopping  %></td>
+                  </tr>
+            </thdad>
+          </table>
+        </div>
+          <div class="method_of_payment">
+            <h4>支払い方法</h4>
+            <% if @order.method_of_payment == 'A' %>
+              <p>クレジットカード</p>
+            <% else %>
+              <p>銀行振り込み</p>
+            <% end %>
+          </div>
+            <div class="address">
+              <%= @order.delivery_postal_code + "　" +  @order.delibery_address  %>
+              <%= @order.delivery_name %>
+            </div>
+              <%= form_with model: @order,url: public_orders_path(@order), local:true do |f| %>
+              <div class="order-link">
+                <%= f.hidden_field :billing_amount, :value => @cart_item_sum + @order.shopping %>
+                <%= f.hidden_field :delivery_postal_code, :value => @order.delivery_postal_code %>
+                <%= f.hidden_field :delibery_address, :value => @order.delibery_address %>
+                <%= f.hidden_field :delivery_name, :value => @order.delivery_name %>
+                <%= f.hidden_field :shopping, :value => @order.shopping %>
+                <%= f.submit '注文を確定する' %>
+              </div>
+              <% end %>
+    </div>
+  </div>
+</div>
