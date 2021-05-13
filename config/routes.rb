@@ -9,7 +9,9 @@ Rails.application.routes.draw do
 
   namespace :public, path: "" do
     get 'customers/mypage' => 'customers#mypage'
-    resource :customers
+    get 'customers/unsubscribe' => 'customers#unsubscribe'
+    patch 'customers/withdraw' => 'customers#withdraw'
+    resource :customers,only: [:edit,:update]
     resources :items,only: [:index, :show]
     delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
     resources :cart_items,except: [:show]
@@ -23,8 +25,9 @@ Rails.application.routes.draw do
   devise_for :customers, controllers: {
       sessions: 'customers/sessions',
       registrations: 'customers/registrations',
-      destroy: 'customers/sessions'
+      destroy: 'customers/sessions/destroy'
   }
+
 
 
   namespace :admin do

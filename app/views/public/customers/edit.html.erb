@@ -49,6 +49,9 @@
           <%= f.submit "編集内容を保存" %>
         </div>
       <% end %>
+        <div class="customer-delete">
+          <%= link_to '退会する',public_customers_unsubscribe_path(@customer) %>
+        </div>
     </div>
   </div>
 </div>
