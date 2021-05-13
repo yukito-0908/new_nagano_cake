@@ -1,0 +1,47 @@
+<divi class="container">
+  <div class="row">
+    <div class="col">
+      <div class="orders">
+        <h4>注文履歴一覧</h4>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>購入日時</th>
+                <th>購入者</th>
+                <th>注文個数</th>
+                <th>注文ステータス</th>
+              </tr>
+            </thead>
+              <tbody>
+                <% @orders.each do |order| %>
+                  <% @sum = 0 %>
+                  <tr>
+                    <td><%=order.updated_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
+                    <td><%=order.customer.first_name + order.customer.last_name%></td>
+                    <% order.order_items.each do |order_item| %>
+                      <% @sum += order_item.quantity %>
+                    <% end %>
+                    <td>
+                      <%= @sum %>
+                    </td>
+                    <td>
+                      <% if order.is_active == '入金待ち' %>
+                        <p>入金待ち</p>
+                      <% elsif order.is_active == '入金確認' %>
+                        <p>入金確認</p>
+                      <% elsif order.is_active == '製作中' %>
+                        <p>製作中</p>
+                      <% elsif order.is_active == '発送準備中' %>
+                        <p>発送準備中</p>
+                      <% else %>
+                        <p>発送済み</p>
+                      <% end %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+          </table>
+      </div>
+    </div>
+  </div>
+</divi>

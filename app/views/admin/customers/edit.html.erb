@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="row">
+    <divi class="col">
+      <%= form_with model: @customer,url: admin_customer_path(@customer.id), local:true do |f| %>
+      <div class="sign">
+        <h1>新規登録</h1>
+          <div class="sign-name">
+            <p>名前</p>
+            <p><%= f.text_field :first_name,:placeholder => "田村"%></p>
+            <p><%= f.text_field :last_name,:placeholder => "透人" %></p>
+          </div>
+
+          <div class="sign-name-kana">
+            <p>フリガナ</p>
+            <p><%= f.text_field :first_name_kana,:placeholder => "タムラ" %></p>
+            <p><%= f.text_field :last_name_kana,:placeholder => "ユキト" %></p>
+          </div>
+
+          <div class="postal_code">
+            <p>郵便番号(ハイフンなし)</p>
+            <p><%= f.text_field :postal_code, :placeholder => "00000000" %></p>
+          </div>
+
+          <div class="address">
+            <p>住所</p>
+            <p><%= f.text_field :address %></p>
+          </div>
+
+          <div class="telephone_number">
+            <p>電話番号</p>
+            <p><%= f.text_field :telephone_number %></p>
+          </div>
+
+          <div class="email">
+            <p>メールアドレス</p>
+            <p><%= f.email_field :email,:placeholder => "tourentiancun@gmail.com" %></p>
+          </div>
+
+          <div class="customer-is_active">
+            <p>会員ステータス</p>
+             <%= f.radio_button :is_active, true %>
+            <%= label_tag :is_active, "有効" %>
+            <%= f.radio_button :is_active, false %>
+            <%= label_tag :is_active, "退会" %>
+          </div>
+
+          <div class="actions">
+            <%= f.submit "変更を保存" %>
+          </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+

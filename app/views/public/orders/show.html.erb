@@ -6,7 +6,7 @@
           <thead>
             <tr>
               <td>注文日</td>
-              <td><%= @order.updated_at %></td>
+              <td><%= @order.updated_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
             </tr>
               <tr>
                 <td>配送先</td>

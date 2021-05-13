@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h4>注文履歴一覧</h4>
+        <div class="customer-profile">
+          <div class="customer-name">
+            <p>購入者</p>
+            <p><%= @order.customer.first_name + @order.customer.last_name %></p>
+          </div>
+            <div class="customer-update">
+              <p>注文日</p>
+              <p><%= @order.updated_at.strftime('%Y/%m/%d %H:%M:%S') %></p>
+            </div>
+              <div class="customer-address">
+                <p><%= @order.delivery_postal_code + @order.delibery_address %><br/>
+                  <%= @order.delivery_name %>
+                </p>
+              </div>
+                <div class="method_of_payment">
+                  <p>支払い方法</p>
+                  <% if @order.method_of_payment == 'A' %>
+                    <p>クレジットカード</p>
+                  <% else %>
+                    <p>銀行振り込み</p>
+                  <% end %>
+                </div>
+                   <%= form_with model: @order,url: admin_order_path(@order.id), local:true do |f| %>
+                    <div class="customer-is_active">
+                      <p>注文ステータス</p>
+                      <p><%= f.select :is_active,options_from_collection_for_select(@order, :id, :is_active) %></p>
+                    </div>
+                  <% end %>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>

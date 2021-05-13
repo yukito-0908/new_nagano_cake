@@ -16,10 +16,10 @@ Rails.application.routes.draw do
     delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
     resources :cart_items,except: [:show]
     resources :addresses,only: [:index, :create, :edit, :update, :destroy]
-    resources :orders,only: [:index,:new, :create,:show]
     post 'orders/confirm' => 'orders#confirm'
     get 'orders/confirm' => 'orders#confirm'
     get 'orders/complete' => 'orders#show_done'
+    resources :orders,only: [:index,:new, :create,:show]
   end
 
   devise_for :customers, controllers: {
@@ -28,13 +28,11 @@ Rails.application.routes.draw do
       destroy: 'customers/sessions/destroy'
   }
 
-
-
   namespace :admin do
+    root :to => 'homes#top'
+    resources :customers, only: [:index,:show,:update,:edit]
     resources :items, only: [:new, :create, :index, :show, :destroy, :edit, :update]
     resources :genres, only: [:index, :edit, :update, :create]
+    resources :orders, only: [:show, :update]
   end
-
-
-
 end

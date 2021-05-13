@@ -9,13 +9,13 @@ class Public::OrdersController < ApplicationController
   def confirm
     @order = Order.new(order_params)
     @cart_items = current_customer.cart_items
-    @address = Address.find(params[:order][:address_id])
     @tax = 1.10
     if  params[:order][:address_option] == "0"
       @order.delivery_postal_code = current_customer.postal_code
       @order.delibery_address = current_customer.address
       @order.delivery_name = current_customer.full_name
     elsif params[:order][:address_option] == "1"
+      @address = Address.find(params[:order][:address_id])
       @order.delivery_postal_code = @address.postal_code
       @order.delibery_address = @address.address
       @order.delivery_name = @address.name

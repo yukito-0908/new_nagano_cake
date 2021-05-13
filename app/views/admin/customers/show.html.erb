@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="customer-show">
+        <h4><%= @customer.first_name + @customer.last_name %>さんの会員ん詳細</h4>
+          <div class="customer-profile">
+            <div class="customer-id">
+              <p>会員ID</p>
+              <p><%= @customer.id %></p>
+            </div>
+              <div class="customer-name">
+                <p>氏名</p>
+                <p><%= @customer.first_name + @customer.last_name %></p>
+              </div>
+                <div class="customer-name">
+                  <p>フリガナ</p>
+                  <p><%= @customer.first_name_kana + @customer.last_name_kana %></p>
+                </div>
+                  <div class="customer-name">
+                    <p>住所</p>
+                    <p><%= @customer.address %></p>
+                  </div>
+                    <div class="customer-name">
+                      <p>電話番号</p>
+                      <p><%= @customer.telephone_number %></p>
+                    </div>
+                      <div class="customer-name">
+                        <p>メールアドレス</p>
+                        <p><%= @customer.email %></p>
+                      </div>
+                        <div class="customer-name">
+                          <p>会員ステータス</p>
+                          <% if @customer.is_active == true %>
+                            <p>有効</p>
+                          <% else %>
+                            <p>退会</p>
+                          <% end %>
+                        </div>
+          </div>
+            <div class="customer-edit">
+              <%= link_to '編集する', edit_admin_customer_path(@customer) %>
+              <%= form_with url: admin_root_path,method: :get, local:true do |f| %>
+              <%= f.hidden_field :customer_id,:value => @customer.id %>
+                <%= f.submit '注文一覧' %>
+              <% end %>
+            </div>
+      </div>
+    </div>
+  </div>
+</div>
