@@ -32,6 +32,33 @@
                     </div>
                   <% end %>
           </div>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>商品名</th>
+                  <th>単価（税込）</th>
+                  <th>数量</th>
+                  <th>小計</th>
+                  <th>制作ステータス</th>
+                </tr>
+              </thead>
+                <tbody>
+                  <% @order_items.each do |order_item| %>
+                  <tr>
+                    <td><%= order_item.item.name %></td>
+                    <td><%= order_item.buy_price %></td>
+                    <td><%= order_item.quantity %></td>
+                    <td><%= order_item.buy_price * order_item.quantity %></td>
+                    <td>
+                      <%= form_with model: order_item,url:  admin_order_item_path(order_item.id), local:true do |f| %>
+                        <p><%= f.select :is_active, OrderItem.is_actives.keys.map %></p>
+                        <p><%= f.submit '更新' %></p>
+                      <% end %>
+                    </td>
+                  </tr>
+                  <% end %>
+                </tbody>
+            </table>
         </div>
     </div>
   </div>
