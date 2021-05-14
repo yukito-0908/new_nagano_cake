@@ -1,0 +1,11 @@
+ja:
+  orders:
+   #(この辺に他の設定値がある)
+  enums:
+    order:
+      is_active:
+        A: 入金待ち
+        B: 入金確認
+        C: 製作中
+        D: 発送準備中
+        E: 発送済み

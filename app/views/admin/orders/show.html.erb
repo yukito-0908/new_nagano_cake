@@ -27,7 +27,8 @@
                    <%= form_with model: @order,url: admin_order_path(@order.id), local:true do |f| %>
                     <div class="customer-is_active">
                       <p>注文ステータス</p>
-                      <p><%= f.select :is_active,options_from_collection_for_select(@order, :id, :is_active) %></p>
+                      <p><%= f.select :is_active, Order.is_actives.keys.map %></p>
+                      <p><%= f.submit  "更新" %></p>
                     </div>
                   <% end %>
           </div>
