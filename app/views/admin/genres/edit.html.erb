@@ -3,11 +3,13 @@
     <div class="col">
       <%= form_with model: @genre,url: admin_genre_path(@genre.id) do |f| %>
         <div class="genre-all d-flex">
-          <h4>ジャンル編集</h4>
-          <div class="genre-input">
-              <%= f.text_field :name %>
+          <p class="mr-2 mt-1">ジャンル名</p>
+          <div class="genre-input ml-4 mr-2">
+            <p><%= f.text_field :name %></p>
           </div>
-          <div class="genre-link"><%=f.submit "変更を保存" %></div>
+          <div class="genre-link ml-4">
+            <%=f.submit "変更を保存", class: "btn btn-success" %>
+          </div>
         </div>
       <% end %>
     </div>

@@ -1,43 +1,43 @@
 <div class="container">
   <div class="row">
-    <div class="col">
-      <div class="item-title">
-        <h4>商品詳細</h4>
+    <div class="col m-3">
+      <div class="item-title" style="width:20%; margin-left:20%;">
+        <h4 class="m-4 text-center bg-light">商品詳細</h4>
       </div>
         <div class="item-all d-flex justify-content-center">
-          <div class="item-img">
-            <%= attachment_image_tag @item, :image, size: "250x250",:class=>"m-3"%>
+          <div class="item-img mr-4">
+            <%= attachment_image_tag @item, :image, size: "300x250",:class=>"m-3"%>
           </div>
             <div class="item-left">
-              <div class="d-flex justify-content-around">
+              <div class="d-flex">
                 <p class="m-3">商品名</p>
                 <p class="m-3"><%= @item.name %></p>
               </div>
-                <div class="d-flex justify-content-around">
+                <div class="d-flex">
                   <p class="m-3">商品説明</p>
                   <p class="m-3"><%= @item.introduction %></p>
                 </div>
-                  <div class="d-flex justify-content-around">
+                  <div class="d-flex">
                     <p class="m-3">ジャンル</p>
                     <p class="m-3"><%= @item.genre.name %></p>
                   </div>
-                    <div class="d-flex justify-content-around">
+                    <div class="d-flex">
                       <p class="m-3">商品価格<br/>
                       (税抜価格)</p>
-                      <div class="m-3"><p><%= @item.price %>(<%= (@item.price * 1.10).to_i  %>)円</p></div>
+                      <div class="m-3"><p><%= (@item.price * 1.10).to_i  %>円</p></div>
                     </div>
                       <div class="d-flex">
                         <p class="m-3">販売ステータス</p>
                         <% if @item.is_active == true %>
-                          <p class="m-3">販売中</p>
+                          <p class="m-3 text-success">販売中</p>
                         <% else %>
-                          <p class="m-3">販売停止中</p>
+                          <p class="m-3 text-success">販売停止中</p>
                         <% end %>
                       </div>
             </div>
-              <div class="item-link">
-                <%= link_to '編集する', edit_admin_item_path(@item) %>
-              </div>
+        </div>
+        <div class="item-link text-center m-3">
+          <%= link_to '編集する', edit_admin_item_path(@item), class: "btn btn-success" %>
         </div>
     </div>
   </div>
