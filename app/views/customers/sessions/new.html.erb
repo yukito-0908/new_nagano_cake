@@ -2,26 +2,26 @@
   <div class="containaer">
     <div class="row">
       <div class="col">
-        <div class="login">
-          <h4>ログイン</h4>
-          <p>会員方はこちらからログイン</p>
-            <div class="email">
-              <p>メールアドレス</p>
-              <P><%= f.email_field :email,:placeholder => "email" %></p>
+        <div class="login w-75 mx-auto">
+          <h4 class="m-4 text-center bg-light w-25">ログイン</h4>
+          <p class="m-4 text-center bg-light w-25">会員方はこちらからログイン</p>
+            <div class="email d-flex justify-content-center">
+              <p class="m-2">メールアドレス</p>
+              <div class="m-2"><%= f.email_field :email,:placeholder => "email" %></div>
             </div>
-              <div class="field">
-                <p>パスワード</p>
-                <%= f.password_field :password, autocomplete: "current-password" %>
+              <div class="field d-flex justify-content-center">
+                <p class="m-2">パスワード</p>
+                <div class="m-2"><%= f.password_field :password, autocomplete: "current-password" %></div>
               </div>
-                <div class="actions">
-                  <%= f.submit "ログイン" %>
+                <div class="actions text-center">
+                  <%= f.submit "ログイン",class: "btn btn-primary m-4" %>
                 </div>
+                  <div class="login-item">
+                    <p class="m-4 text-center bg-light w-25">会員登録がお済みでないかた</p>
+                    <p><%= link_to 'こちら',new_customer_registration_path %>から新規登録を行ってください</p>
+                    </div>
+                  </div>
         </div>
-          <div class="login-item">
-            <p>会員登録がお済みでないかた</p>
-            <p><%= link_to 'こちら',new_customer_registration_path %>から新規登録を行ってください</p>
-            </div>
-          </div>
       </div>
     </div>
   </div>

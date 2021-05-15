@@ -1,24 +1,29 @@
 <div class="container">
   <div class="row">
-    <div class="col">
+    <div class="col m-4">
       <div class="top-page">
         <div class="top-title">
-          <div class="top-image"><%= image_tag('images.jpeg',size:"750x300" ) %></div>
-          <p>ようこそ長野ケーキへ!<br/>
-          このサイトはケーキ限定のECサイトになります。<br/>
-          会員でない方も商品の観覧はできますが、<br/>
-          購入には会員登録が必要になります。</p>
+          <div class="top-image" style="position:relative"><div class="text-center"><%= image_tag('images.jpeg',size:"750x300" ) %></div>
+            <p style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            -webkit-transform: translate(-50%, -50%);  -ms-transform: translate(-50%, -50%); background:white; padding:30px;" >
+            ようこそ長野ケーキへ!<br/>
+            このサイトはケーキ限定のECサイトになります。<br/>
+            会員でない方も商品の観覧はできますが、<br/>
+            購入には会員登録が必要になります。</p>
+          </div>
         </div>
       </div>
-        <div class="item-new">
-          <h1>新着商品</h1>
-          <% @items.each do |item| %>
-          <%= attachment_image_tag item, :image, size: "200x200" %>
-          <%= item.name %>
-          <%= item.price %>
-          <% end %>
-        </div>
-          <div class="item-show">
+          <h4 class="font-weight-bold m-4">新着商品</h4>
+           <div class="d-flex">
+              <% @items.each do |item| %>
+                <div class="item text-center">
+                  <div class="m-2"><%= attachment_image_tag item, :image, size: "200x200" %></div>
+                  <div class="m-2"><%= item.name %></div>
+                  <div class="m-2"><%= item.price %></div>
+                </div>
+              <% end %>
+            </div>
+          <div class="item-show text-right m-4">
             <% if customer_signed_in? %>
               <p><%= link_to '全ての商品を見る', public_items_path %></p>
             <% else %>

@@ -13,6 +13,8 @@ class Admin::OrderItemsController < ApplicationController
         is_active: "発送準備中"
       )
     redirect_to admin_root_path(customer_id: @order_item.order.customer.id)
+    else
+    redirect_to admin_root_path
     end
   end
 

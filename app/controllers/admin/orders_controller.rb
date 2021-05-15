@@ -15,6 +15,8 @@ class Admin::OrdersController < ApplicationController
       is_active: "制作待ち",
     )
     redirect_to admin_root_path(customer_id: @order.customer.id)
+    else
+       redirect_to admin_root_path
     end
   end
 
