@@ -1,15 +1,15 @@
 <div class="container">
   <div class="row">
-    <div class="col">
+    <div class="col text-center m-4">
       <div class="unsubscribe-title">
-        <h4>本当に退会しますか?</h4>
+        <h4 class="m-4">本当に退会しますか?</h4>
         <p>退会すると、会員登録情報や<br/>
         これまでの購入履歴が閲覧できなくなります。<br/>
         退会する場合は、「退会する」をクリックしてください</p>
       </div>
         <div class="link">
-          <%= link_to "退会しない", public_customers_mypage_path %>
-          <%= link_to "退会", public_customers_withdraw_path(@customer), method: :patch,data: { confirm: 'ログアウトしますか？' } %>
+          <%= link_to "退会しない", public_customers_mypage_path,class: "btn btn-primary m-2" %>
+          <%= link_to "退会", public_customers_withdraw_path(@customer), method: :patch,data: { confirm: '退会しますか？' },class: "btn btn-danger m-2" %>
         </div>
     </div>
   </div>

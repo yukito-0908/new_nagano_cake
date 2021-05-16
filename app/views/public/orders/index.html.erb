@@ -1,35 +1,35 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <h4>注文履歴一覧</h4>
+      <h4 class="m-4 text-center bg-light w-25">注文履歴一覧</h4>
       <div class="order-title">
         <table class="table">
-          <thead>
+          <thead class="bg-light">
             <tr>
-              <th>注文日</th>
-              <th>配送先</th>
-              <th>注文商品</th>
-              <th>支払金額</th>
-              <th>ステータス</th>
-              <th>注文詳細</th>
+              <th class="border border-dark">注文日</th>
+              <th class="border border-dark">配送先</th>
+              <th class="border border-dark">注文商品</th>
+              <th class="border border-dark">支払金額</th>
+              <th class="border border-dark">ステータス</th>
+              <th class="border border-dark">注文詳細</th>
             </tr>
           </thead>
             <tbody>
               <% @orders.each do |order| %>
               <tr>
-                <td><%= order.updated_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
-                <td>
-                  <%= order.delivery_postal_code %>
-                  <%= order.delibery_address %>
-                  <%= order.delivery_name  %>
+                <td class="border border-dark" style="padding-top:30px;"><%= order.updated_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
+                <td class="border border-dark">
+                  <div><%= order.delivery_postal_code %></div>
+                  <div><%= order.delibery_address %></div>
+                  <div><%= order.delivery_name  %></div>
                 </td>
-                <td>
+                <td class="border border-dark" style="padding-top:30px;">
                   <% order.order_items.each do |order_item| %>
                     <%= order_item.item.name %>
                   <% end %>
                   </td>
-                <td><%= order.billing_amount %></td>
-                <td>
+                <td class="border border-dark" style="padding-top:30px;"><%= order.billing_amount %></td>
+                <td class="border border-dark" style="padding-top:30px;">
                   <% if order.is_active == 0 %>
                     <p>入金待ち</p>
                   <% elsif order.is_active == 1 %>
@@ -42,7 +42,7 @@
                     <p>発送済み</p>
                   <% end %>
                 </td>
-                  <td><%=link_to '表示する', public_order_path(order.id) %></td>
+                  <td class="border border-dark"  style="padding-top:30px;"><%=link_to '表示する', public_order_path(order.id),class: "btn btn-primary" %></td>
               </tr>
               <% end %>
             </tbody>

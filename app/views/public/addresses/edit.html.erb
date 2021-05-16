@@ -1,23 +1,23 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <h4>配送先編集</h4>
+      <h4 class="m-4 text-center bg-light w-25">配送先編集</h4>
         <%= form_with model: @address,url:  public_address_path(@address.id), local:true do |f| %>
-          <div class="address-post">
-            <p>郵便番号(ハイフンなし)</p>
+          <div class="address-post d-flex">
+            <p class="w-25">郵便番号(ハイフンなし)</p>
             <p><%= f.text_field :postal_code %></p>
           </div>
-            <div class="address-address">
-              <p>住所</p>
-              <p><%= f.text_field :address %></p>
+            <div class="address-address d-flex">
+              <p class="w-25">住所</p>
+              <p><%= f.text_field :address,:style=> "padding-right:150px;" %></p>
             </div>
-              <div class="address-name">
-                <p>宛名</p>
+              <div class="address-name d-flex">
+                <p class="w-25">宛名</p>
                 <p><%= f.text_field :name %></p>
+                  <div class="address-link" style="margin-left:20%;">
+                    <%= f.submit '変更内容を保存' %>
+                  </div>
               </div>
-                <div class="address-link">
-                  <%= f.submit '変更内容を保存' %>
-                </div>
         <% end %>
     </div>
   </div>
